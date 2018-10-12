@@ -1,9 +1,9 @@
 {
-	"name": "cptechinc/dpluso-warehouse-classes",
+	"name": "cptechinc/dpluso-warehouse",
     "type": "library",
     "description": "Classes for Warehouse Dplus Online",
     "keywords": ["crm"],
-    "homepage": "http://github.com/cptechinc/dpluso-warehouse-classes",
+    "homepage": "http://github.com/cptechinc/dpluso-warehouse",
 	"autoload": {
 		"files": [
 			"src/Model/WhseSession.class.php",
