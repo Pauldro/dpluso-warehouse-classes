@@ -1,12 +1,14 @@
 <?php
+    use Dplus\ProcessWire\DplusWire as DplusWire;
+    
     /**
      * Class to Interact with the Whse Session Record for one session
      */
     class WhseSession {
-        use ThrowErrorTrait;
-		use MagicMethodTraits;
-		use CreateFromObjectArrayTraits;
-		use CreateClassArrayTraits;
+        use Dplus\Base\ThrowErrorTrait;
+		use Dplus\Base\MagicMethodTraits;
+		use Dplus\Base\CreateFromObjectArrayTraits;
+		use Dplus\Base\CreateClassArrayTraits;
         
         /**
          * Session Identifier
@@ -156,6 +158,14 @@
         }
         
         /**
+         * Returns if user is using wrong function
+         * @return bool Is user using the wrong function?
+         */
+        public function is_usingwrongfunction() {
+            return (strpos(strtolower($this->status), 'wrong function') !== false )? true : false;
+        }
+        
+        /**
          * Returns a message about the Status of the Order
          * @return string Order Status
          */
@@ -164,10 +174,12 @@
             
             if ($this->is_orderonhold()) {
                 $msg = "Order $this->ordernbr is on hold";
-            } elseif($this->is_orderverified()) {
+            } elseif ($this->is_orderverified()) {
                 $msg = "Order $this->ordernbr has been verified";
-            } elseif($this->is_orderinvoiced()) {
+            } elseif ($this->is_orderinvoiced()) {
                 $msg = "Order $this->ordernbr has been invoiced";
+            } elseif ($this->is_orderinvalid()) {
+                $msg = "$this->ordernbr is Invalid";
             }
             return $msg;
         }
@@ -207,8 +219,8 @@
          * @return string                      logout URL
          */
         public function end_session() {
-            $url = new Purl\Url("127.0.0.1".DplusWire::wire('config')->pages->salesorderpicking);
-            $url->path->add('redir');
+            $url = new Purl\Url(DplusWire::wire('page')->fullURL->getUrl());
+            $url->path = DplusWire::wire('config')->pages->salesorderpicking.'redir/';
             $url->query->set('action', 'logout')->set('sessionID', $this->sessionid);
             echo $url->getUrl();
             curl_redir($url->getUrl());
@@ -219,8 +231,8 @@
          * @return void
          */
         public function start_pickingsession() {
-            $url = new Purl\Url("127.0.0.1".DplusWire::wire('config')->pages->salesorderpicking);
-            $url->path = DplusWire::wire('config')->pages->salesorderpicking."redir/";
+            $url = new Purl\Url(DplusWire::wire('page')->fullURL->getUrl());
+            $url->path = DplusWire::wire('config')->pages->salesorderpicking.'redir/';
             $url->query->set('action', 'start-pick')->set('sessionID', $this->sessionid);
             curl_redir($url->getUrl());
         }
@@ -230,11 +242,12 @@
          * @return void
          */
         public function start_pickpackingsession() {
-            $url = new Purl\Url("127.0.0.1".DplusWire::wire('config')->pages->salesorderpicking);
-            $url->path = DplusWire::wire('config')->pages->salesorderpicking."redir/";
+            $url = new Purl\Url(DplusWire::wire('page')->fullURL->getUrl());
+            $url->path = DplusWire::wire('config')->pages->salesorderpicking.'redir/';
             $url->query->set('action', 'start-pick-pack')->set('sessionID', $this->sessionid);
             curl_redir($url->getUrl());
         }
+        
         
         /* =============================================================
 			CRUD FUNCTIONS
@@ -262,14 +275,17 @@
         /**
          * Sends the Start Session Request using cURL
          * @param  string   $sessionID Session Identifier
-         * @param  Purl\Url $pageurl   URL for Current Page
          * @param  bool     $debug     Run in debug? If so, return SQL Query
          * @return void
          */
-        public static function start_session($sessionID, Purl\Url $pageurl, $debug = false) {
-            $url = new Purl\Url($pageurl->getUrl());
-            $url->path = DplusWire::wire('config')->pages->salesorderpicking."redir/";
+        public static function start_session($sessionID, $debug = false) {
+            $url = new Purl\Url(DplusWire::wire('page')->fullURL->getUrl());
+            $url->path = DplusWire::wire('config')->pages->salesorderpicking.'redir/';
             $url->query->set('action', 'initiate-whse')->set('sessionID', $sessionID);
             curl_redir($url->getUrl());
         }
+        
+        public static function remove_nondbkeys($array) {
+ 			return $array;
+ 		}
     }

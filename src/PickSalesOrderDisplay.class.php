@@ -1,9 +1,11 @@
 <?php
+    use Dplus\ProcessWire\DplusWire as DplusWire;
+    
     class PickSalesOrderDisplay {
-        use ThrowErrorTrait;
-		use MagicMethodTraits;
-		use CreateFromObjectArrayTraits;
-		use CreateClassArrayTraits;
+        use Dplus\Base\ThrowErrorTrait;
+		use Dplus\Base\MagicMethodTraits;
+		use Dplus\Base\CreateFromObjectArrayTraits;
+		use Dplus\Base\CreateClassArrayTraits;
         
         protected $url;
         protected $ordn;

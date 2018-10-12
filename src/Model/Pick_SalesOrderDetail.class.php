@@ -1,12 +1,14 @@
 <?php
+    use Dplus\ProcessWire\DplusWire as DplusWire;
+    
     /**
      * Class for the Pick Sales Order Detail Item
      */
     class Pick_SalesOrderDetail {
-		use ThrowErrorTrait;
-		use MagicMethodTraits;
-		use CreateFromObjectArrayTraits;
-		use CreateClassArrayTraits;
+		use Dplus\Base\ThrowErrorTrait;
+		use Dplus\Base\MagicMethodTraits;
+		use Dplus\Base\CreateFromObjectArrayTraits;
+		use Dplus\Base\CreateClassArrayTraits;
         
         /**
          * Session Identifier
@@ -212,6 +214,16 @@
          */
         public function get_qtyremaining() {
             return $this->qtyordered - ($this->get_orderpickedtotal());
+        }
+        
+        
+        public function get_caseqtyforqty($qty) {
+            return $this->caseqty < 1 ? 0 : floor(($qty) / $this->caseqty);
+        }
+        
+        public function get_qtycasedescription($qty) {
+            $caseqty = $this->get_caseqtyforqty($qty);
+            return $caseqty == 1 ? "$caseqty case &nbsp;" : "$caseqty cases";
         }
         
         /**
