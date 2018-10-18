@@ -6,4 +6,9 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'BarcodedItem' => $baseDir . '/src/Model/BarcodedItem.class.php',
+    'Dplus\\Warehouse\\PickSalesOrderDisplay' => $baseDir . '/src/PickSalesOrderDisplay.class.php',
+    'Pick_SalesOrder' => $baseDir . '/src/Model/Pick_SalesOrder.class.php',
+    'Pick_SalesOrderDetail' => $baseDir . '/src/Model/Pick_SalesOrderDetail.class.php',
+    'WhseSession' => $baseDir . '/src/Model/WhseSession.class.php',
 );

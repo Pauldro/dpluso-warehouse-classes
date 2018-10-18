@@ -2,15 +2,12 @@
 	"name": "cptechinc/dpluso-warehouse",
     "type": "library",
     "description": "Classes for Warehouse Dplus Online",
-    "keywords": ["crm"],
+    "keywords": ["dplus-warehouse", "dpluso-warehouse", "dplus-pick", "dplus-pack"],
     "homepage": "http://github.com/cptechinc/dpluso-warehouse",
 	"autoload": {
-		"files": [
-			"src/Model/WhseSession.class.php",
-			"src/Model/BarcodedItem.class.php",
-			"src/Model/Pick_SalesOrder.class.php",
-			"src/Model/Pick_SalesOrderDetail.class.php",
-            "src/PickSalesOrderDisplay.class.php"
+		"classmap": [
+			"src/PickSalesOrderDisplay.class.php", 
+			"src/Model/"
 		]
 	}
 }

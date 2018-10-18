@@ -1,15 +1,15 @@
 <?php 
-    use Dplus\ProcessWire\DplusWire as DplusWire;
+    use Dplus\ProcessWire\DplusWire;
     
     /**
      * Class to interact with the wmpickhed table which
      * is the SalesOrder Head to pick
      */
     class Pick_SalesOrder {
-        use Dplus\Base\ThrowErrorTrait;
-		use Dplus\Base\MagicMethodTraits;
-		use Dplus\Base\CreateFromObjectArrayTraits;
-		use Dplus\Base\CreateClassArrayTraits;
+        use \Dplus\Base\ThrowErrorTrait;
+		use \Dplus\Base\MagicMethodTraits;
+		use \Dplus\Base\CreateFromObjectArrayTraits;
+		use \Dplus\Base\CreateClassArrayTraits;
         
         
         /**
