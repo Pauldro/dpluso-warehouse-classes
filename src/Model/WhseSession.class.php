@@ -1,4 +1,5 @@
 <?php
+    use Purl\Url;
     use Dplus\ProcessWire\DplusWire;
     
     /**
@@ -219,7 +220,7 @@
          * @return string                      logout URL
          */
         public function end_session() {
-            $url = new Purl\Url(DplusWire::wire('page')->fullURL->getUrl());
+            $url = new Url(DplusWire::wire('page')->fullURL->getUrl());
             $url->path = DplusWire::wire('config')->pages->salesorderpicking.'redir/';
             $url->query->set('action', 'logout')->set('sessionID', $this->sessionid);
             echo $url->getUrl();
@@ -231,7 +232,7 @@
          * @return void
          */
         public function start_pickingsession() {
-            $url = new Purl\Url(DplusWire::wire('page')->fullURL->getUrl());
+            $url = new Url(DplusWire::wire('page')->fullURL->getUrl());
             $url->path = DplusWire::wire('config')->pages->salesorderpicking.'redir/';
             $url->query->set('action', 'start-pick')->set('sessionID', $this->sessionid);
             curl_redir($url->getUrl());
@@ -242,7 +243,7 @@
          * @return void
          */
         public function start_pickpackingsession() {
-            $url = new Purl\Url(DplusWire::wire('page')->fullURL->getUrl());
+            $url = new Url(DplusWire::wire('page')->fullURL->getUrl());
             $url->path = DplusWire::wire('config')->pages->salesorderpicking.'redir/';
             $url->query->set('action', 'start-pick-pack')->set('sessionID', $this->sessionid);
             curl_redir($url->getUrl());
@@ -279,12 +280,17 @@
          * @return void
          */
         public static function start_session($sessionID, $debug = false) {
-            $url = new Purl\Url(DplusWire::wire('page')->fullURL->getUrl());
+            $url = new Url(DplusWire::wire('page')->fullURL->getUrl());
             $url->path = DplusWire::wire('config')->pages->salesorderpicking.'redir/';
             $url->query->set('action', 'initiate-whse')->set('sessionID', $sessionID);
             curl_redir($url->getUrl());
         }
         
+        /**
+         * Removes non-database keys from an array that has this classes properties as Keys
+         * @param array $array
+         * @return array
+         */
         public static function remove_nondbkeys($array) {
  			return $array;
  		}

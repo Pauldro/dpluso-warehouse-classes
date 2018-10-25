@@ -73,6 +73,11 @@
             'custID' => 'customerid'
         );
         
+        /**
+         * Creates Array for JavaScript Configs
+         * @param string $sessionID Session Identifier
+         * @return void
+         */
         public function init($sessionID) {
             $this->sessionID = $sessionID;
             $whsesession = WhseSession::load($this->sessionID);

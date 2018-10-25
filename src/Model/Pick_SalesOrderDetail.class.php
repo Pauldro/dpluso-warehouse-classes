@@ -149,6 +149,11 @@
             'itemID' => 'itemnbr'
         );
         
+        /**
+         * Creates Array for JavaScript Configs
+         * @param string $sessionID Session Identifier
+         * @return void
+         */
         public function init() {
             DplusWire::wire('config')->js('pickitem', [
                 'item' => [
@@ -216,11 +221,21 @@
             return $this->qtyordered - ($this->get_orderpickedtotal());
         }
         
-        
+        /**
+         * Returns the Qty as cases
+         * // NOTE Rounds down to nearest int
+         * @param int $qty
+         * @return int
+         */
         public function get_caseqtyforqty($qty) {
             return $this->caseqty < 1 ? 0 : floor(($qty) / $this->caseqty);
         }
         
+        /**
+         * Returns the Qty as cases and if its cases vs case
+         * @param int $qty
+         * @return string
+         */
         public function get_qtycasedescription($qty) {
             $caseqty = $this->get_caseqtyforqty($qty);
             return $caseqty == 1 ? "$caseqty case &nbsp;" : "$caseqty cases";
@@ -289,6 +304,13 @@
             return get_whsesessiondetail($sessionID, $debug);
         }
         
+        /**
+         * Returns if there are details available to be picked for this Session
+         *
+         * @param string $sessionID Session Identifier
+         * @param bool   $debug    Run in debug? If so, return SQL Query
+         * @return boolean
+         */
         public static function has_detailstopick($sessionID, $debug = false) {
             return has_whsesessiondetail($sessionID, $debug);
         }

@@ -56,10 +56,22 @@
             return $this->primary == 'Y' ? true : false;
         }
         
+        /**
+         * Returns Barcoded Item
+         * @param string $barcode  UPC / Barcode for Item
+         * @param bool   $debug    Run in debug? If so return SQL Query
+         * @return BarcodedItem
+         */
         public static function load($barcode, $debug = false) {
             return get_barcodeditem($barcode, $debug);
         }
         
+        /**
+         * Returns ItemID for barcode
+         * @param string $barcode UPC / Barcode for Item
+         * @param bool   $debug   Run in debug? If so return SQL Query
+         * @return void
+         */
         public static function find_barcodeitemid($barcode, $debug = false) {
             return get_barcodeditemid($barcode, $debug);
         }
