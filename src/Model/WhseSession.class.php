@@ -115,7 +115,7 @@
          * @return bool        Is Order finished?
          */
         public function is_orderfinished() {
-            return strtolower($this->status) == 'end of order' ? true : false;
+            return strpos(strtolower($this->status), 'end of order') !== false ? true : false;
         }
         
         /**
@@ -123,7 +123,7 @@
          * @return bool Is Order exited?
          */
         public function is_orderexited() {
-            return strtolower($this->status) == 'order exited' ? true : false;
+            return strpos(strtolower($this->status), 'order exited') !== false ? true : false;
         }
         
         /**
@@ -131,7 +131,7 @@
          * @return bool        Is Order on Hold?
          */
         public function is_orderonhold() {
-            return strtolower($this->status) == 'order on hold' ? true : false;
+            return strpos(strtolower($this->status), 'order on hold') !== false? true : false;
         }
         
         /**
@@ -139,7 +139,7 @@
          * @return bool        Has Order been verified?
          */
         public function is_orderverified() {
-            return strtolower($this->status) == 'order is verified' ? true : false;
+            return strpos(strtolower($this->status), 'order is verified') !== false ? true : false;
         }
         
         /**
@@ -147,7 +147,7 @@
          * @return bool        Has Order been invoiced?
          */
         public function is_orderinvoiced() {
-            return strtolower($this->status) == 'order is invoiced' ? true : false;
+            return strpos(strtolower($this->status), 'order is invoiced') !== false ? true : false;
         }
         
         /**
@@ -155,7 +155,7 @@
          * @return bool        Has Order been Sales Order Number is invalid
          */
         public function is_orderinvalid() {
-            return strtolower($this->status) == 'bad order nbr' ? true : false;
+            return strpos(strtolower($this->status), 'bad order nbr') !== false? true : false;
         }
         
         /**
@@ -163,7 +163,7 @@
          * @return bool Is user using the wrong function?
          */
         public function is_usingwrongfunction() {
-            return (strpos(strtolower($this->status), 'wrong function') !== false )? true : false;
+            return strpos(strtolower($this->status), 'wrong function') !== false ? true : false;
         }
         
         /**
