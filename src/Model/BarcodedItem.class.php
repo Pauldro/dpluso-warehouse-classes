@@ -45,7 +45,7 @@
         protected $fieldaliases = array(
             'qty' => 'unitqty',
             'itemid' => 'itemnbr',
-            'itemiID' => 'itemnbr'
+            'itemID' => 'itemnbr'
         );
         
         /**
