@@ -90,6 +90,15 @@
             'serialnbr' => 'lotserial',
             'lotnbr'    => 'lotserial'
         );
+        
+        /**
+         * Item Types and the associated properties / aliases
+         */
+        static $itemtype_properties = array(
+            'L' => 'lotnbr',
+            'S' => 'serialnbr',
+            'N' => 'itemid'
+        );
 
         /**
          * Returns if Item is a serialized item
@@ -121,5 +130,25 @@
          */
         public function is_priceonly() {
             return $this->type == 'P';
+        }
+        
+        /**
+         * Returns an alias / property name for this item based on its type
+         * @return string
+         */
+        public function get_itemtypeproperty() {
+            return self::$itemtype_properties($this->type);
+        }
+        
+        /**
+         * Returns the Identifying property value based on itemtype
+         * @return string
+         */
+        public function get_itemidentifier() {
+            if ($this->is_serialized() || $this->is_lotted) {
+                return $this->lotserial;
+            } else {
+                return $this->itemid;
+            }
         }
     }
