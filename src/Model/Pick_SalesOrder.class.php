@@ -86,8 +86,8 @@
                 'order' => [
                     'ordn' => $this->ordernbr,
                     'pallet' => [
-                        'current' => $whsesession->palletnbr,
-                        'last' => $this->lastpalletnbr
+                        'current' => intval($whsesession->palletnbr),
+                        'last' => intval($this->lastpalletnbr)
                     ]
                 ]
             ]);
