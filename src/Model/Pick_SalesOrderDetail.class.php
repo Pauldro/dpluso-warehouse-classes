@@ -159,11 +159,12 @@
                 'item' => [
                     'itemid' => $this->itemnbr,
                     'qty' => [
-                        'ordered' => $this->qtyordered,
-                        'picked' => $this->get_userpickedtotal(),
-                        'pulled' => $this->qtypulled,
+                        'expected'     => $this->binqty,
+                        'ordered'      => $this->qtyordered,
+                        'picked'       => $this->get_userpickedtotal(),
+                        'pulled'       => $this->qtypulled,
                         'total_picked' => $this->get_orderpickedtotal(),
-                        'remaining' => $this->get_qtyremaining()
+                        'remaining'    => $this->get_qtyremaining()
                     ]
                 ]
             ]);
@@ -246,7 +247,15 @@
          * @return bool Have user picked too much?
          */
         public function has_pickedtoomuch() {
-            return ($this->get_orderpickedtotal()) > $this->qtyordered ? true : false;
+            return $this->get_orderpickedtotal() > $this->qtyordered ? true : false;
+        }
+        
+        /**
+         * Returns if User has picked more than bin qty
+         * @return bool Have user picked too much?
+         */
+        public function has_pickedmorethanbinqty() {
+            return $this->get_userpickedtotal() > $this->binqty ? true : false;
         }
         
         /**
@@ -309,7 +318,7 @@
          *
          * @param string $sessionID Session Identifier
          * @param bool   $debug    Run in debug? If so, return SQL Query
-         * @return boolean
+         * @return bool
          */
         public static function has_detailstopick($sessionID, $debug = false) {
             return has_whsesessiondetail($sessionID, $debug);
