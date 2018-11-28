@@ -159,12 +159,12 @@
                 'item' => [
                     'itemid' => $this->itemnbr,
                     'qty' => [
-                        'expected'     => intval($this->binqty),
-                        'ordered'      => intval($this->qtyordered),
-                        'picked'       => intval($this->get_userpickedtotal()),
-                        'pulled'       => intval($this->qtypulled),
-                        'total_picked' => intval($this->get_orderpickedtotal()),
-                        'remaining'    => intval($this->get_qtyremaining())
+                        'expected'     => $this->binqty,
+                        'ordered'      => $this->qtyordered,
+                        'picked'       => $this->get_userpickedtotal(),
+                        'pulled'       => $this->qtypulled,
+                        'total_picked' => $this->get_orderpickedtotal(),
+                        'remaining'    => $this->get_qtyremaining()
                     ]
                 ]
             ]);
@@ -257,7 +257,6 @@
         public function has_pickedmorethanbinqty() {
             return $this->get_userpickedtotal() > $this->binqty ? true : false;
         }
-        
         
         /**
          * Returns the Picked Order Item record number

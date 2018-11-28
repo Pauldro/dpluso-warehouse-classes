@@ -1,6 +1,6 @@
 <?php
     use Dplus\ProcessWire\DplusWire;
-    
+
     class BinrSession {
         use \Dplus\Base\ThrowErrorTrait;
 		use \Dplus\Base\MagicMethodTraits;
@@ -51,6 +51,11 @@
         protected $tobin;
 
         /**
+         * BINR function
+         * BINR | PUTAWAY
+         */
+        protected $function;
+        /**
          * Status Message
          * @var string
          */
@@ -75,8 +80,10 @@
          * @param string $identifier
          * @return string
          */
-        public function get_binritemurl($itemproperty, $identifier) {
-            $url = new Purl\Url(DplusWire::('config')->pages->binr);
+        static function get_binritemurl($itemproperty, $identifier) {
+            $url = new Purl\Url(DplusWire::wire('config')->pages->binr);
+            $url->query->set($itemproperty, $identifier);
+            return $url->getUrl();
         }
 
         /**
