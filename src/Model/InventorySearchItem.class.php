@@ -91,13 +91,17 @@
             'lotnbr'    => 'lotserial'
         );
         
-        /**
-         * Item Types and the associated properties / aliases
-         */
-        static $itemtype_properties = array(
+        
+        public static $itemtype_properties = array(
             'L' => 'lotnbr',
             'S' => 'serialnbr',
             'N' => 'itemid'
+        );
+        
+        public static $itemtype_propertydesc = array(
+            'L' => 'lot number',
+            'S' => 'serial number',
+            'N' => 'item id'
         );
 
         /**
@@ -105,7 +109,7 @@
          * @return bool
          */
         public function is_serialized() {
-            return $this->type == 'S';
+            return $this->itemtype == 'S';
         }
 
         /**
@@ -113,7 +117,7 @@
          * @return bool
          */
         public function is_lotted() {
-            return $this->type == 'L';
+            return $this->itemtype == 'L';
         }
 
         /**
@@ -121,7 +125,7 @@
          * @return bool
          */
         public function is_normal() {
-            return $this->type == 'N';
+            return $this->itemtype == 'N';
         }
 
         /**
@@ -129,23 +133,19 @@
          * @return bool
          */
         public function is_priceonly() {
-            return $this->type == 'P';
+            return $this->itemtype == 'P';
         }
         
-        /**
-         * Returns an alias / property name for this item based on its type
-         * @return string
-         */
         public function get_itemtypeproperty() {
-            return self::$itemtype_properties($this->type);
+            return self::$itemtype_properties[$this->itemtype];
         }
         
-        /**
-         * Returns the Identifying property value based on itemtype
-         * @return string
-         */
+        public function get_itemtypepropertydesc() {
+            return self::$itemtype_propertydesc[$this->itemtype];
+        }
+        
         public function get_itemidentifier() {
-            if ($this->is_serialized() || $this->is_lotted) {
+            if ($this->is_serialized() || $this->is_lotted()) {
                 return $this->lotserial;
             } else {
                 return $this->itemid;

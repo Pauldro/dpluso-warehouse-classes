@@ -1,5 +1,6 @@
 <?php
-
+    use Dplus\ProcessWire\DplusWire;
+    
     class BinrSession {
         use \Dplus\Base\ThrowErrorTrait;
 		use \Dplus\Base\MagicMethodTraits;
@@ -66,6 +67,17 @@
          * @var int
          */
         protected $time;
+
+        /**
+         * Undocumented function
+         *
+         * @param string $itemproperty Item Property ex. itemid, lotnbr, serialnbr
+         * @param string $identifier
+         * @return string
+         */
+        public function get_binritemurl($itemproperty, $identifier) {
+            $url = new Purl\Url(DplusWire::('config')->pages->binr);
+        }
 
         /**
          * Returns if there's a Binr session Record in the database
