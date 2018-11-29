@@ -14,6 +14,18 @@
         protected $sessionid;
 
         /**
+         * Login ID
+         * @var string
+         */
+        protected $loginid;
+
+        /**
+         * Warehouse ID
+         * @var string
+         */
+        protected $whseid;
+
+        /**
          * Item ID
          *
          * @var string
@@ -50,11 +62,18 @@
          */
         protected $tobin;
 
+         /**
+         * Quantity in To Bin
+         * @var int
+         */
+        protected $tobinqty;
+
         /**
          * BINR function
          * BINR | PUTAWAY
          */
         protected $function;
+
         /**
          * Status Message
          * @var string
