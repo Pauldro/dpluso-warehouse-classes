@@ -64,6 +64,16 @@
         protected $time;
 
         /**
+         * Property aliases
+         * @var array
+         */
+        protected $fieldaliases = array(
+            'id'    => 'bin',
+            'binid' => 'bin',
+            'binID' => 'bin'
+        );
+
+        /**
          * Returns an array of ItemBinInfo pertaining to all the bins that 
          * store this Item ID
          * @param  string $sessionID  Session Identifier
@@ -71,8 +81,8 @@
          * @param  bool   $debug      Run in debug? If so, return SQL Query
          * @return array
          */
-        static function find_by_itemid($sessionID, $itemID, $debug) {
-            return get_itembinfo_itemid($sessionID, $itemID, $debug);
+        static function find_by_itemid($sessionID, $itemID, $debug = false) {
+            return get_bininfo_itemid($sessionID, $itemID, $debug);
         }
 
         /**
@@ -83,19 +93,36 @@
          * @param  bool   $debug      Run in debug? If so, return SQL Query
          * @return array
          */
-        static function find_by_lotnbr($sessionID, $lotnbr, $debug) {
-            return get_itembinfo_lotnbr($sessionID, $lotnbr, $debug);
+        static function find_by_lotnbr($sessionID, $lotnbr, $debug = false) {
+            return get_bininfo_lotserial($sessionID, $lotnbr, $debug);
         }
 
         /**
          * Returns an Instance of ItemBinInfo pertaining to the location of this Serial Number
-         * // NOTE Returns Single Object, because Serialized Items are individual
+         * // NOTE Returns 1 in array because Serialized Items are individual
          * @param  string $sessionID   Session Identifier
          * @param  string $serialnbr   Serial Number to Locate 
          * @param  bool   $debug       Run in debug? If so, return SQL Query
          * @return array
          */
-        static function get_by_serialnbr($sessionID, $serialnbr, $debug) {
-            return get_itembinfo_serialnbr($sessionID, $serialnbr, $debug);
+        static function find_by_serialnbr($sessionID, $serialnbr, $debug = false) {
+            return get_bininfo_lotserial($sessionID, $serialnbr, $debug);
+        }
+        
+        /**
+         * REturns an array of this class pertaining to all the bins that contain this item
+         * @param  string              $sessionID Session Identifier
+         * @param  InventorySearchItem $item      Item to find bins for
+         * @param  bool                $debug     Run in debug? If so, return SQL Query
+         * @return array                          Bins that contain this item
+         */
+        static function find_by_item($sessionID, InventorySearchItem $item, $debug = false) {
+            if ($item->is_lotted()) {
+                return self::find_by_lotnbr($sessionID, $item->lotserial, $debug);
+            } elseif ($item->is_serialized()) {
+                return self::find_by_serialnbr($sessionID, $item->lotserial, $debug);
+            } else {
+                return self::find_by_itemid($sessionID, $item->itemid, $debug);
+            }
         }
     }
