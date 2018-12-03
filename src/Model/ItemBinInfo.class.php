@@ -84,7 +84,7 @@
          * @return array
          */
         static function find_by_lotnbr($sessionID, $lotnbr, $debug) {
-            return get_itembinfo_lotserial($sessionID, $lotnbr, $debug);
+            return get_itembinfo_lotnbr($sessionID, $lotnbr, $debug);
         }
 
         /**
@@ -95,7 +95,7 @@
          * @param  bool   $debug       Run in debug? If so, return SQL Query
          * @return array
          */
-        static function get_by_serial($sessionID, $serialnbr, $debug) {
-            return get_itembinfo_lotserial($sessionID, $serialnbr, $debug);
+        static function get_by_serialnbr($sessionID, $serialnbr, $debug) {
+            return get_itembinfo_serialnbr($sessionID, $serialnbr, $debug);
         }
     }
