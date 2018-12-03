@@ -84,7 +84,7 @@
          * @return array
          */
         static function find_by_lotnbr($sessionID, $lotnbr, $debug) {
-            return get_itembinfo_lotnbr($sessionID, $lotnbr, $debug);
+            return get_itembinfo_lotserial($sessionID, $lotnbr, $debug);
         }
 
         /**
@@ -96,6 +96,6 @@
          * @return array
          */
         static function get_by_serial($sessionID, $serialnbr, $debug) {
-            return get_itembinfo_lotnbr($sessionID, $serialnbr, $debug);
+            return get_itembinfo_lotserial($sessionID, $serialnbr, $debug);
         }
     }

@@ -66,6 +66,12 @@
          * @var string
          */
         protected $desc2;
+        
+        /**
+         * Primary Bin
+         * @var string
+         */
+        protected $primarybin;
 
         /**
          * Date
@@ -150,5 +156,39 @@
             } else {
                 return $this->itemid;
             }
+        }
+        
+        /**
+         * Loads an object of this class with the provided lot number
+         * @param string $sessionID Session Identifier
+         * @param string $lotnbr    Lot Number
+         * @param bool   $debug     Run in debug? If so, return SQL Query
+         * @return InventorySearchItem
+         */
+        static function load_from_lotnbr($sessionID, $lotnbr, $debug = false) {
+            return get_invsearchitem_lotserial($sessionID, $lotnbr, $debug);
+        }
+        
+        /**
+         * Loads an object of this class with the provided serial number
+         * @param string $sessionID  Session Identifier
+         * @param string $serialnbr  Serial Number
+         * @param bool   $debug      Run in debug? If so, return SQL Query
+         * @return InventorySearchItem
+         */
+        static function load_from_serialnbr($sessionID, $serialnbr, $debug = false) {
+            return get_invsearchitem_lotserial($sessionID, $serialnbr, $debug);
+        }
+        
+
+        /**
+         * Loads an object of this class with the provided item ID
+         * @param string $sessionID Session Identifier
+         * @param string $itemid    Item ID
+         * @param bool   $debug     Run in debug? If so, return SQL Query
+         * @return InventorySearchItem
+         */
+        static function load_from_itemid($sessionID, $itemID, $debug = false) {
+            return get_invsearchitem_itemid($sessionID, $itemID, $debug);
         }
     }
