@@ -106,7 +106,7 @@
         }
         
         /**
-         * Returns Item Url to page
+         * Returns Item Url to request bins for the items
          * @param string $itemID       Item ID
          * @param string $itemproperty Item Property ex. itemid, lotnbr, serialnbr
          * @param string $identifier
