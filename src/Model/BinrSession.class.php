@@ -71,6 +71,7 @@
         /**
          * BINR function
          * BINR | PUTAWAY
+         * @var string
          */
         protected $function;
 
@@ -93,15 +94,31 @@
         protected $time;
 
         /**
-         * Undocumented function
-         *
+         * Returns Item Url to page
          * @param string $itemproperty Item Property ex. itemid, lotnbr, serialnbr
          * @param string $identifier
          * @return string
          */
-        static function get_binritemurl($itemproperty, $identifier) {
+        static function get_binritemURL($itemproperty, $identifier) {
             $url = new Purl\Url(DplusWire::wire('config')->pages->binr);
             $url->query->set($itemproperty, $identifier);
+            return $url->getUrl();
+        }
+        
+        /**
+         * Returns Item Url to page
+         * @param string $itemID       Item ID
+         * @param string $itemproperty Item Property ex. itemid, lotnbr, serialnbr
+         * @param string $identifier
+         * @return string
+         */
+        static function get_binritembinsURL($itemID, $itemproperty, $identifier) {
+            $url = new Purl\Url(DplusWire::wire('config')->pages->menu_binr);
+            $url->path->add('redir');
+            $url->query->set('action','search-item-bins');
+            $url->query->set('itemID', $itemID);
+            $url->query->set($itemproperty, $identifier);
+            $url->query->set('page', DplusWire::wire('page')->fullURL->getUrl());
             return $url->getUrl();
         }
 
