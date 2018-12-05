@@ -78,6 +78,12 @@
          * @var string
          */
         protected $bin;
+
+        /**
+         * Current Bin Qty
+         * @var int
+         */
+        protected $qty;
         
         /**
          * Date
@@ -97,10 +103,10 @@
          * @var array
          */
         protected $fieldaliases = array(
-            'qty'       => 'unitqty',
             'itemID'    => 'itemid',
             'serialnbr' => 'lotserial',
-            'lotnbr'    => 'lotserial'
+            'lotnbr'    => 'lotserial',
+            'binID'     => 'bin'
         );
         
         /**
@@ -194,20 +200,20 @@
          * @param bool   $debug        Run in debug? If so, return SQL Query
          * @return InventorySearchItem
          */
-        static function load_from_lotserial($sessionID, $lotnbr, $debug = false) {
-            return get_invsearchitem_lotserial($sessionID, $lotnbr, $debug);
+        static function load_from_lotserial($sessionID, $lotserial, $debug = false) {
+            return get_invsearchitem_lotserial($sessionID, $lotserial, $debug);
         }
 
         /**
          * Returns the number of records that match the (Lot | Serial) Number and if needed bin ID
-         * @param string $sessionID    Session Identifier
-         * @param string $lotserial    Lot Number | Serial Number
+         * @param string $sessionID   Session Identifier
+         * @param string $lotserial   Lot Number | Serial Number
          * @param string $binID       Bin ID
          * @param bool   $debug       Run in debug? If so, return SQL Query
          * @return int
          */
-        static function count_from_lotserial($sessionID, $itemID, $binID = '', $debug = false) {
-            return count_invsearch_lotserial($sessionID, $itemID, $binID, $debug);
+        static function count_from_lotserial($sessionID, $lotserial, $binID = '', $debug = false) {
+            return count_invsearch_lotserial($sessionID, $lotserial, $binID, $debug);
         }
 
         /**
