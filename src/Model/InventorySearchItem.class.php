@@ -188,36 +188,80 @@
         }
         
         /**
-         * Loads an object of this class with the provided lot number
-         * @param string $sessionID Session Identifier
-         * @param string $lotnbr    Lot Number
-         * @param bool   $debug     Run in debug? If so, return SQL Query
+         * Loads an object of this class with the provided (Lot | Serial) Number
+         * @param string $sessionID    Session Identifier
+         * @param string $lotserial    Lot Number | Serial Number
+         * @param bool   $debug        Run in debug? If so, return SQL Query
          * @return InventorySearchItem
          */
-        static function load_from_lotnbr($sessionID, $lotnbr, $debug = false) {
+        static function load_from_lotserial($sessionID, $lotnbr, $debug = false) {
             return get_invsearchitem_lotserial($sessionID, $lotnbr, $debug);
         }
-        
-        /**
-         * Loads an object of this class with the provided serial number
-         * @param string $sessionID  Session Identifier
-         * @param string $serialnbr  Serial Number
-         * @param bool   $debug      Run in debug? If so, return SQL Query
-         * @return InventorySearchItem
-         */
-        static function load_from_serialnbr($sessionID, $serialnbr, $debug = false) {
-            return get_invsearchitem_lotserial($sessionID, $serialnbr, $debug);
-        }
-        
 
         /**
-         * Loads an object of this class with the provided item ID
+         * Returns the number of records that match the (Lot | Serial) Number and if needed bin ID
+         * @param string $sessionID    Session Identifier
+         * @param string $lotserial    Lot Number | Serial Number
+         * @param string $binID       Bin ID
+         * @param bool   $debug       Run in debug? If so, return SQL Query
+         * @return int
+         */
+        static function count_from_lotserial($sessionID, $itemID, $binID = '', $debug = false) {
+            return count_invsearch_lotserial($sessionID, $itemID, $binID, $debug);
+        }
+
+        /**
+         * Loads an object of this class with the provided item ID from the provided Bin
          * @param string $sessionID Session Identifier
-         * @param string $itemid    Item ID
+         * @param string $itemID    Item ID
+         * @param string $binID     Bin ID
          * @param bool   $debug     Run in debug? If so, return SQL Query
          * @return InventorySearchItem
          */
-        static function load_from_itemid($sessionID, $itemID, $debug = false) {
-            return get_invsearchitem_itemid($sessionID, $itemID, $debug);
+        static function load_from_itemid($sessionID, $itemID, $binID = '', $debug = false) {
+            return get_invsearchitem_itemid($sessionID, $itemID, $binID, $debug);
+        }
+
+        /**
+         * Returns the number of records that match the item ID and if needed bin ID
+         * @param string $sessionID Session Identifier
+         * @param string $itemID    Item ID
+         * @param string $binID     Bin ID
+         * @param bool   $debug     Run in debug? If so, return SQL Query
+         * @return int
+         */
+        static function count_from_itemid($sessionID, $itemID, $binID = '', $debug = false) {
+            return count_invsearch_itemid($sessionID, $itemID, $binID, $debug);
+        }
+
+        /**
+         * Returns an array of InventorySearch Items that were found
+         * @param string $sessionID Session Identifier
+         * @param bool   $debug     Run in debug? If so, return SQL Query
+         * @return array
+         */
+        static function get_all($sessionID, $debug = false) {
+            return get_invsearchitems($sessionID, $debug);
+        }
+
+        /**
+         * Returns the number of all the records found regardless of Item Type, and Identifier
+         * @param string $sessionID Session Identifier
+         * @param bool   $debug     Run in debug? If so, return SQL Query
+         * @return int
+         */
+        static function count_all($sessionID, $debug = false) {
+            return count_invsearch($sessionID, $debug);
+        }
+
+         /**
+         * Returns the first record found in the DB
+         * // NOTE Should ONLY be used if there's one record in the table
+         * @param string $sessionID Session Identifier
+         * @param bool   $debug     Run in debug? If so, return SQL Query
+         * @return InventorySearchItem
+         */
+        static function load_first($sessionID, $debug = false) {
+            return get_firstinvsearchitem($sessionID, $debug);
         }
     }
