@@ -72,7 +72,13 @@
          * @var string
          */
         protected $primarybin;
-
+        
+        /**
+         * Current Bin
+         * @var string
+         */
+        protected $bin;
+        
         /**
          * Date
          * @var int
@@ -97,13 +103,21 @@
             'lotnbr'    => 'lotserial'
         );
         
-        
+        /**
+         * Item Type and the property / alias name that represents it
+         * @var array
+         */
         public static $itemtype_properties = array(
             'L' => 'lotnbr',
             'S' => 'serialnbr',
             'N' => 'itemid'
         );
         
+        /**
+         * Array of Item Types and their description
+         *
+         * @var array
+         */
         public static $itemtype_propertydesc = array(
             'L' => 'lot number',
             'S' => 'serial number',
@@ -142,14 +156,29 @@
             return $this->itemtype == 'P';
         }
         
+        /**
+         * Returns the property needed to access the item's identifier
+         * based on its item type
+         * e.g. Lot Number / Serial Number / Item ID
+         * @return string
+         */
         public function get_itemtypeproperty() {
             return self::$itemtype_properties[$this->itemtype];
         }
         
+        /**
+         * Returns the description needed for this item based on its itemtype
+         * @return string
+         */
         public function get_itemtypepropertydesc() {
             return self::$itemtype_propertydesc[$this->itemtype];
         }
         
+        /**
+         * Returns item's identifer based on item type
+         * e.g. Lot Number / Serial Number / Item ID
+         * @return string
+         */
         public function get_itemidentifier() {
             if ($this->is_serialized() || $this->is_lotted()) {
                 return $this->lotserial;

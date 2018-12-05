@@ -110,7 +110,7 @@
         }
         
         /**
-         * REturns an array of this class pertaining to all the bins that contain this item
+         * Returns an array of this class pertaining to all the bins that contain this item
          * @param  string              $sessionID Session Identifier
          * @param  InventorySearchItem $item      Item to find bins for
          * @param  bool                $debug     Run in debug? If so, return SQL Query
@@ -124,5 +124,16 @@
             } else {
                 return self::find_by_itemid($sessionID, $item->itemid, $debug);
             }
+        }
+        
+        /**
+         * Returns item bin qty
+         * @param  string              $sessionID Session Identifier
+         * @param  InventorySearchItem $item      Item to find qty in its bin
+         * @param  bool                $debug     Run in debug? If so, return SQL Query
+         * @return array                          Bins that contain this item
+         */
+        static function get_binqty($sessionID, InventorySearchItem $item, $debug = false) {
+            return get_bininfo_qty($sessionID, $item, $debug);
         }
     }

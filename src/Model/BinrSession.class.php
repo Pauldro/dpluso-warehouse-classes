@@ -107,17 +107,16 @@
         
         /**
          * Returns Item Url to request bins for the items
-         * @param string $itemID       Item ID
-         * @param string $itemproperty Item Property ex. itemid, lotnbr, serialnbr
-         * @param string $identifier
+         * @param InventorySearchItem $item       Item
          * @return string
          */
-        static function get_binritembinsURL($itemID, $itemproperty, $identifier) {
+        static function get_binritembinsURL(InventorySearchItem $item) {
             $url = new Purl\Url(DplusWire::wire('config')->pages->menu_binr);
             $url->path->add('redir');
             $url->query->set('action','search-item-bins');
-            $url->query->set('itemID', $itemID);
-            $url->query->set($itemproperty, $identifier);
+            $url->query->set('itemID', $item->itemid);
+            $url->query->set($item->get_itemtypeproperty(), $item->get_itemidentifier());
+            $url->query->set('binID', $item->bin);
             $url->query->set('page', DplusWire::wire('page')->fullURL->getUrl());
             return $url->getUrl();
         }
