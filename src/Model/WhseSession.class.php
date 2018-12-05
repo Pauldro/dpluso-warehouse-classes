@@ -83,12 +83,12 @@
          */
         protected $fieldaliases = array(
             'sessionID' => 'sessionid',
-            'loginID' => 'loginid',
-            'whseID' => 'whseid',
-            'ordn' => 'ordernbr',
-            'bin' => 'binnbr',
-            'pallet' => 'palletnbr',
-            'carton' => 'cartonnbr'
+            'loginID'   => 'loginid',
+            'whseID'    => 'whseid',
+            'ordn'      => 'ordernbr',
+            'bin'       => 'binnbr',
+            'pallet'    => 'palletnbr',
+            'carton'    => 'cartonnbr'
         );
         
         /* =============================================================
@@ -183,6 +183,14 @@
                 $msg = "$this->ordernbr is Invalid";
             }
             return $msg;
+        }
+        
+        /**
+         * Returns if whse session status has the word success
+         * @return bool was the whse function successful?
+         */
+        public function had_succeeded() {
+            return strpos(strtolower($this->status), 'success') !== false ? true : false;
         }
         
         /**
