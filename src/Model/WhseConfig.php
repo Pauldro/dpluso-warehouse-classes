@@ -224,10 +224,10 @@
          * Returns bin range
          *
          * @param bool $debug Run in debug? If so, return SQL Query
-         * @return WarehouseBin
+         * @return WhseBin
          */
         public function get_binrange($debug = false) {
-            return WarehouseBin::get_binrange($this->whseid, $debug);
+            return WhseBin::get_binrange($this->whseid, $debug);
         }
 
         /**
@@ -237,7 +237,7 @@
          * @return array WhseBin
          */
         public function get_binlist($debug = false) {
-            return WarehouseBin::get_binlist($this->whseid, $debug);
+            return WhseBin::get_binlist($this->whseid, $debug);
         }
 
         /**
@@ -257,6 +257,11 @@
      * If the bins are listed then there are multiple records with the frombins being the bin id, 
      */
     class WhseBin {
+        use \Dplus\Base\ThrowErrorTrait;
+		use \Dplus\Base\MagicMethodTraits;
+		use \Dplus\Base\CreateFromObjectArrayTraits;
+        use \Dplus\Base\CreateClassArrayTraits;
+
         /**
          * Warehouse ID
          *
