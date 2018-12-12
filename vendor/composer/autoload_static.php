@@ -11,8 +11,11 @@ class ComposerStaticInitccd8d6f6eec3cd1f49126ba9f289ce0d
         'BinrSession' => __DIR__ . '/../..' . '/src/Model/BinrSession.class.php',
         'Dplus\\Warehouse\\PickSalesOrderDisplay' => __DIR__ . '/../..' . '/src/PickSalesOrderDisplay.class.php',
         'InventorySearchItem' => __DIR__ . '/../..' . '/src/Model/InventorySearchItem.class.php',
+        'ItemBinInfo' => __DIR__ . '/../..' . '/src/Model/ItemBinInfo.class.php',
         'Pick_SalesOrder' => __DIR__ . '/../..' . '/src/Model/Pick_SalesOrder.class.php',
         'Pick_SalesOrderDetail' => __DIR__ . '/../..' . '/src/Model/Pick_SalesOrderDetail.class.php',
+        'WarehouseConfig' => __DIR__ . '/../..' . '/src/Model/WarhouseConfig.class.php',
+        'WhseBin' => __DIR__ . '/../..' . '/src/Model/WarhouseConfig.class.php',
         'WhseSession' => __DIR__ . '/../..' . '/src/Model/WhseSession.class.php',
     );
 
