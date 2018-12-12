@@ -99,7 +99,7 @@
          * @return void
          */
         public function init() {
-            $whse = WarehouseConfig::load($this->whseid);
+            $whse = WhseConfig::load($this->whseid);
             
             if ($whse->are_binsranged()) {
                 $arranged = 'range';
