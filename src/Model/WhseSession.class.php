@@ -109,7 +109,7 @@
                     'through' => $range->through
                 );
             } else {
-                $arranged = 'range';
+                $arranged = 'list';
                 $list = $whse->get_binlist();
                 $bins = array();
                 

@@ -13,7 +13,7 @@ return array(
     'ItemBinInfo' => $baseDir . '/src/Model/ItemBinInfo.class.php',
     'Pick_SalesOrder' => $baseDir . '/src/Model/Pick_SalesOrder.class.php',
     'Pick_SalesOrderDetail' => $baseDir . '/src/Model/Pick_SalesOrderDetail.class.php',
-    'WarehouseBin' => $baseDir . '/src/Model/WarhouseConfig.class.php',
-    'WarehouseConfig' => $baseDir . '/src/Model/WarhouseConfig.class.php',
+    'WhseBin' => $baseDir . '/src/Model/WhseConfig.php',
+    'WhseConfig' => $baseDir . '/src/Model/WhseConfig.php',
     'WhseSession' => $baseDir . '/src/Model/WhseSession.class.php',
 );

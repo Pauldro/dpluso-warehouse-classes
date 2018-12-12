@@ -1,5 +1,5 @@
 <?php
-    class WarehouseConfig {
+    class WhseConfig {
         use \Dplus\Base\ThrowErrorTrait;
 		use \Dplus\Base\MagicMethodTraits;
 		use \Dplus\Base\CreateFromObjectArrayTraits;
@@ -244,7 +244,7 @@
          * Returns WhseConfig
          * @param string $whseID
          * @param bool   $debug   Run in debug? If so, return SQL Query
-         * @return WarehouseConfig
+         * @return WhseConfig
          */
         static function load($whseID, $debug = false) {
             return get_whsetbl($whseID, $debug);
@@ -256,7 +256,7 @@
      * If the Bins are ranged then there's only one record in the table, and the from through values are needed
      * If the bins are listed then there are multiple records with the frombins being the bin id, 
      */
-    class WarehouseBin {
+    class WhseBin {
         /**
          * Warehouse ID
          *
