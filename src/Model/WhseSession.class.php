@@ -95,6 +95,45 @@
 			CLASS FUNCTIONS
 		============================================================ */
         /**
+         * Creates Array for JavaScript Configs
+         * @return void
+         */
+        public function init() {
+            $whse = WarehouseConfig::load($this->whseid);
+            
+            if ($whse->are_binsranged()) {
+                $arranged = 'range';
+                $range = $whse->get_binrange();
+                $bins = array(
+                    'from' => $range->from,
+                    'through' => $range->through
+                );
+            } else {
+                $arranged = 'range';
+                $list = $whse->get_binlist();
+                $bins = array();
+                
+                foreach ($list as $bin) {
+                    $bins[] = array(
+                        'id'   => $bin->from,
+                        'type' => $bin->type,
+                        'desc' => $bin->desc
+                    );
+                }
+            }
+            
+            DplusWire::wire('config')->js('session', [
+                'whse' => [
+                    'id' => $whse->id,
+                    'bins' => [
+                        'arranged' => $arranged,
+                        'bins'     => $bins
+                    ]
+                ]
+            ]);
+        }
+        
+        /**
          * Returns if the Whse Session has a bin defined
          * @return bool Is the bin defined?
          */

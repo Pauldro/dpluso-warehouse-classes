@@ -9,7 +9,7 @@
          * Warehouse ID
          * @var string 2 char
          */
-        protected $whseid;
+        protected $whseID;
 
         /**
          * Warehouse Name
@@ -224,10 +224,10 @@
          * Returns bin range
          *
          * @param bool $debug Run in debug? If so, return SQL Query
-         * @return WhseBin
+         * @return WarehouseBin
          */
         public function get_binrange($debug = false) {
-            return WhseBin::get_binrange($this->whseid, $debug);
+            return WarehouseBin::get_binrange($this->whseid, $debug);
         }
 
         /**
@@ -237,14 +237,14 @@
          * @return array WhseBin
          */
         public function get_binlist($debug = false) {
-            return WhseBin::get_binlist($this->whseid, $debug);
+            return WarehouseBin::get_binlist($this->whseid, $debug);
         }
 
         /**
          * Returns WhseConfig
          * @param string $whseID
          * @param bool   $debug   Run in debug? If so, return SQL Query
-         * @return WhseConfig
+         * @return WarehouseConfig
          */
         static function load($whseID, $debug = false) {
             return get_whsetbl($whseID, $debug);
@@ -256,7 +256,7 @@
      * If the Bins are ranged then there's only one record in the table, and the from through values are needed
      * If the bins are listed then there are multiple records with the frombins being the bin id, 
      */
-    class WhseBin {
+    class WarehouseBin {
         /**
          * Warehouse ID
          *
@@ -320,8 +320,8 @@
          * @param bool $debug  Run in debug? If so, return SQL Query
          * @return WhseBin
          */
-        static function get_binrange($whseid, $debug = false) {
-            return get_bnctl_range($whseid, $debug);
+        static function get_binrange($whseID, $debug = false) {
+            return get_bnctl_range($whseID, $debug);
         }
 
         /**
@@ -330,7 +330,7 @@
          * @param bool $debug  Run in debug? If so, return SQL Query
          * @return array WhseBin
          */
-        static function get_binlist($whseid, $debug = false) {
-            return get_bnctl_list($whseid, $debug);
+        static function get_binlist($whseID, $debug = false) {
+            return get_bnctl_list($whseID, $debug);
         }
     }
