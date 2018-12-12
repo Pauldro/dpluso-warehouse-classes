@@ -60,6 +60,10 @@
          */
         protected $lastpalletnbr;
         
+        /**
+         * Session Identifier
+         * @var string
+         */
         protected $sessionID;
         
         
