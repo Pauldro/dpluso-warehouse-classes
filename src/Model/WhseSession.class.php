@@ -18,13 +18,13 @@
         protected $sessionid;
         
         /**
-         * Date of Last Update
+         * Date Session Record was Updated
          * @var int
          */
         protected $date;
         
         /**
-         * Time Session Record Update
+         * Time Session Record was Updated
          * @var int
          */
         protected $time;
@@ -114,11 +114,7 @@
                 $bins = array();
                 
                 foreach ($list as $bin) {
-                    $bins[] = array(
-                        'id'   => $bin->from,
-                        'type' => $bin->type,
-                        'desc' => $bin->desc
-                    );
+                    $bins[$bin->from] = "$bin->desc";
                 }
             }
             

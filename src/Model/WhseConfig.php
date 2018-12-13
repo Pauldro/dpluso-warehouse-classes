@@ -224,7 +224,7 @@
          * Returns bin range
          *
          * @param bool $debug Run in debug? If so, return SQL Query
-         * @return WhseBin
+         * @return WarehouseBin
          */
         public function get_binrange($debug = false) {
             return WhseBin::get_binrange($this->whseid, $debug);
@@ -261,7 +261,7 @@
 		use \Dplus\Base\MagicMethodTraits;
 		use \Dplus\Base\CreateFromObjectArrayTraits;
         use \Dplus\Base\CreateClassArrayTraits;
-
+        
         /**
          * Warehouse ID
          *
