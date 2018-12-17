@@ -1,6 +1,7 @@
 <?php
     use Purl\Url;
     use Dplus\ProcessWire\DplusWire;
+    use Dplus\Base\Curl;
     
     /**
      * Class to Interact with the Whse Session Record for one session
@@ -18,13 +19,13 @@
         protected $sessionid;
         
         /**
-         * Date Session Record was Updated
+         * Date of Last Update
          * @var int
          */
         protected $date;
         
         /**
-         * Time Session Record was Updated
+         * Time Session Record Update
          * @var int
          */
         protected $time;
@@ -263,11 +264,11 @@
          * @return string                      logout URL
          */
         public function end_session() {
+            $curl = new Curl();
             $url = new Url(DplusWire::wire('page')->fullURL->getUrl());
             $url->path = DplusWire::wire('config')->pages->salesorderpicking.'redir/';
             $url->query->set('action', 'logout')->set('sessionID', $this->sessionid);
-            echo $url->getUrl();
-            curl_redir($url->getUrl());
+            $curl->get($url->getUrl());
         }
         
         /**
@@ -275,10 +276,11 @@
          * @return void
          */
         public function start_pickingsession() {
+            $curl = new Curl();
             $url = new Url(DplusWire::wire('page')->fullURL->getUrl());
             $url->path = DplusWire::wire('config')->pages->salesorderpicking.'redir/';
             $url->query->set('action', 'start-pick')->set('sessionID', $this->sessionid);
-            curl_redir($url->getUrl());
+            $curl->get($url->getUrl());
         }
         
         /**
@@ -286,10 +288,11 @@
          * @return void
          */
         public function start_pickpackingsession() {
+            $curl = new Curl();
             $url = new Url(DplusWire::wire('page')->fullURL->getUrl());
             $url->path = DplusWire::wire('config')->pages->salesorderpicking.'redir/';
             $url->query->set('action', 'start-pick-pack')->set('sessionID', $this->sessionid);
-            curl_redir($url->getUrl());
+            $curl->get($url->getUrl());
         }
         
         
@@ -323,10 +326,11 @@
          * @return void
          */
         public static function start_session($sessionID, $debug = false) {
+            $curl = new Curl();
             $url = new Url(DplusWire::wire('page')->fullURL->getUrl());
             $url->path = DplusWire::wire('config')->pages->salesorderpicking.'redir/';
             $url->query->set('action', 'initiate-whse')->set('sessionID', $sessionID);
-            curl_redir($url->getUrl());
+            $curl->get($url->getUrl());
         }
         
         /**

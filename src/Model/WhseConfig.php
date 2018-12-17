@@ -224,7 +224,7 @@
          * Returns bin range
          *
          * @param bool $debug Run in debug? If so, return SQL Query
-         * @return WarehouseBin
+         * @return WhseBin
          */
         public function get_binrange($debug = false) {
             return WhseBin::get_binrange($this->whseid, $debug);
@@ -313,7 +313,7 @@
             'whseid'  => 'warehouse',
             'whseID'  => 'warehouse',
             'from'    => 'binfrom',
-            'through' => 'binthrough',
+            'through' => 'binthru',
             'type'    => 'bintype',
             'area'    => 'binarea',
             'desc'    => 'bindesc',
