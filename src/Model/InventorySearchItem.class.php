@@ -259,6 +259,26 @@
         static function count_all($sessionID, $debug = false) {
             return count_invsearch($sessionID, $debug);
         }
+        
+        /**
+         * Returns the number of distinct records found for each origin type
+         * @param string $sessionID Session Identifier
+         * @param bool   $debug     Run in debug? If so, return SQL Query
+         * @return int
+         */
+        static function count_distinct_xorigin($sessionID, $debug = false) {
+            return count_invsearch_distinct_xorigin($sessionID, $debug);
+        }
+        
+        /**
+         * Returns an array of InventorySearch Items that were found that are distinct by xorigin (Cross Referencee)
+         * @param string $sessionID Session Identifier
+         * @param bool   $debug     Run in debug? If so, return SQL Query
+         * @return array
+         */
+        static function get_all_distinct_xorigin($sessionID, $debug = false) {
+            return get_invsearchitems_distinct_xorigin($sessionID, $debug);
+        }
 
          /**
          * Returns the first record found in the DB

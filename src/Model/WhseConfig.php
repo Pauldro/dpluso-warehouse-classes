@@ -239,6 +239,34 @@
         public function get_binlist($debug = false) {
             return WhseBin::get_binlist($this->whseid, $debug);
         }
+        
+        public function validate_bin($binID, $debug = false) {
+            if ($this->are_binslisted()) {
+                return $this->validate_binlist($binID, $debug);
+            } else {
+                return $this->validate_binrange($binID, $debug);
+            }
+        }
+        
+        /**
+         * Returns if BIn is valid in the range
+         * @param string $binID   Bin to validate that it is in the range
+         * @param bool   $debug   Run in debug? If so, return SQL Query
+         * @return bool           Is Bin a valid bin according to Range Rules
+         */
+        public function validate_binrange($binID, $debug = false) {
+            return WhseBin::validate_binrange($this->whseid, $binID, $debug);
+        }
+        
+        /**
+         * Returns if BIn is an exisiting bin
+         * @param string $binID   Bin to validate that it is an exisiting bin
+         * @param bool   $debug   Run in debug? If so, return SQL Query
+         * @return bool           Is Bin a valid bin?
+         */
+        public function validate_binlist($binID, $debug = false) {
+            return WhseBin::validate_binlist($this->whseid, $binID, $debug);
+        }
 
         /**
          * Returns WhseConfig
@@ -321,8 +349,8 @@
 
         /**
          * Returns bin range
-         * @param bool $whseID Warehouse ID
-         * @param bool $debug  Run in debug? If so, return SQL Query
+         * @param string $whseID Warehouse ID
+         * @param bool   $debug  Run in debug? If so, return SQL Query
          * @return WhseBin
          */
         static function get_binrange($whseID, $debug = false) {
@@ -331,11 +359,33 @@
 
         /**
          * Returns bin list
-         * @param bool $whseID Warehouse ID
-         * @param bool $debug  Run in debug? If so, return SQL Query
+         * @param string $whseID Warehouse ID
+         * @param bool   $debug  Run in debug? If so, return SQL Query
          * @return array WhseBin
          */
         static function get_binlist($whseID, $debug = false) {
             return get_bnctl_list($whseID, $debug);
+        }
+        
+        /**
+         * Returns if BIn is valid in the range
+         * @param string $whseID  Warehouse ID
+         * @param string $binID   Bin to validate that it is in the range
+         * @param bool   $debug   Run in debug? If so, return SQL Query
+         * @return bool           Is Bin a valid bin according to Range Rules
+         */
+        static function validate_binrange($whseID, $binID, $debug = false) {
+            return validate_bnctl_binrange($whseID, $binID, $debug);
+        }
+        
+        /**
+         * Returns if BIn is an exisiting bin
+         * @param string $whseID  Warehouse ID
+         * @param string $binID   Bin to validate that it is an exisiting bin
+         * @param bool   $debug   Run in debug? If so, return SQL Query
+         * @return bool           Is Bin a valid bin?
+         */
+        static function validate_binlist($whseID, $binID, $debug = false) {
+            return validate_bnctl_binlist($whseID, $binID, $debug);
         }
     }
