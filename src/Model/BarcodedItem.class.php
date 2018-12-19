@@ -62,7 +62,7 @@
          * @param bool   $debug    Run in debug? If so return SQL Query
          * @return BarcodedItem
          */
-        public static function load($barcode, $debug = false) {
+        static function load($barcode, $debug = false) {
             return get_barcodeditem($barcode, $debug);
         }
         
@@ -72,7 +72,17 @@
          * @param bool   $debug   Run in debug? If so return SQL Query
          * @return void
          */
-        public static function find_barcodeitemid($barcode, $debug = false) {
+        static function find_barcodeitemid($barcode, $debug = false) {
             return get_barcodeditemid($barcode, $debug);
+        }
+        
+        /**
+         * Returns array of Barcoded Item Unit of Measures
+         * @param string $itemID  Item ID
+         * @param bool   $debug   Run in debug? If so return SQL Query
+         * @return array          BarcodedItem
+         */
+        static function find_distinct_unitofmeasure($itemID, $debug = false) {
+            return get_barcodes_distinct_uom($itemID, $debug);
         }
     }

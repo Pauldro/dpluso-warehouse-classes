@@ -1,4 +1,7 @@
 <?php
+    /**
+     * Class for dealing with the invsearch table to get results for barcode / item ID / lot serial searching
+     */
     class InventorySearchItem {
         use \Dplus\Base\ThrowErrorTrait;
 		use \Dplus\Base\MagicMethodTraits;

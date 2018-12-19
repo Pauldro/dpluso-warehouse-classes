@@ -8,6 +8,7 @@
 		"classmap": [
 			"src/PickSalesOrderDisplay.class.php", 
 			"src/PhysicalCount.class.php",
+			"src/BinReassign.class.php",
 			"src/Model/"
 		]
 	}

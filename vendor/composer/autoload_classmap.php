@@ -7,7 +7,7 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'BarcodedItem' => $baseDir . '/src/Model/BarcodedItem.class.php',
-    'BinrSession' => $baseDir . '/src/Model/BinrSession.class.php',
+    'Dplus\\Warehouse\\Binr' => $baseDir . '/src/BinReassign.class.php',
     'Dplus\\Warehouse\\PhysicalCount' => $baseDir . '/src/PhysicalCount.class.php',
     'Dplus\\Warehouse\\PickSalesOrderDisplay' => $baseDir . '/src/PickSalesOrderDisplay.class.php',
     'InventorySearchItem' => $baseDir . '/src/Model/InventorySearchItem.class.php',
