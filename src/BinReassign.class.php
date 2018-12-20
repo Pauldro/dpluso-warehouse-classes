@@ -5,6 +5,11 @@
     use Purl\Url;
 
     /**
+	 * Use Statements for Model Classes which are non-namespaced
+	 */
+    use InventorySearchItem;
+    
+    /**
      * Class for Providing functions necessary for Bin Reassignment
      */
     class Binr {
