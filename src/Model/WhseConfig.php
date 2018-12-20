@@ -1,4 +1,7 @@
 <?php
+    /**
+     * Class for getting Warehouse Configurations and Data
+     */
     class WhseConfig {
         use \Dplus\Base\ThrowErrorTrait;
 		use \Dplus\Base\MagicMethodTraits;

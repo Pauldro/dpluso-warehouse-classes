@@ -3,7 +3,7 @@
 
     use Dplus\ProcessWire\DplusWire;
     use Purl\Url;
-
+    
     /**
 	 * Use Statements for Model Classes which are non-namespaced
 	 */
