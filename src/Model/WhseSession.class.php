@@ -265,7 +265,7 @@
          */
         public function end_session() {
             $curl = new Curl();
-            $url = new Url(DplusWire::wire('page')->fullURL->getUrl());
+            $url = new Url('127.0.0.1');
             $url->path = DplusWire::wire('config')->pages->salesorderpicking.'redir/';
             $url->query->set('action', 'logout')->set('sessionID', $this->sessionid);
             $curl->get($url->getUrl());
@@ -277,7 +277,7 @@
          */
         public function start_pickingsession() {
             $curl = new Curl();
-            $url = new Url(DplusWire::wire('page')->fullURL->getUrl());
+            $url = new Url('127.0.0.1');
             $url->path = DplusWire::wire('config')->pages->salesorderpicking.'redir/';
             $url->query->set('action', 'start-pick')->set('sessionID', $this->sessionid);
             $curl->get($url->getUrl());
@@ -289,7 +289,7 @@
          */
         public function start_pickpackingsession() {
             $curl = new Curl();
-            $url = new Url(DplusWire::wire('page')->fullURL->getUrl());
+            $url = new Url('127.0.0.1');
             $url->path = DplusWire::wire('config')->pages->salesorderpicking.'redir/';
             $url->query->set('action', 'start-pick-pack')->set('sessionID', $this->sessionid);
             $curl->get($url->getUrl());
@@ -327,8 +327,8 @@
          */
         public static function start_session($sessionID, $debug = false) {
             $curl = new Curl();
-            $url = new Url(DplusWire::wire('page')->fullURL->getUrl());
-            $url->path = DplusWire::wire('config')->pages->salesorderpicking.'redir/';
+            $url = new Url('127.0.0.1');
+            $url->path = DplusWire::wire('config')->pages->warehouse.'redir/';
             $url->query->set('action', 'initiate-whse')->set('sessionID', $sessionID);
             $curl->get($url->getUrl());
         }

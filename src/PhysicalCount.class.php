@@ -56,11 +56,30 @@
 			$this->sessionID = $sessionID;
 		}
 		
-		
+		/**
+		 * Returns Item URL for when Item is Chosen
+		 * @param  string $itemproperty
+		 * @param  string $identifier
+		 * @return string
+		 */
 		public function get_choose_itemURL($itemproperty, $identifier) {
 			$url = new Url(DplusWire::wire('config')->pages->inventory_physicalcount);
 			$url->query->set('binID', $this->binID);
             $url->query->set($itemproperty, $identifier);
             return $url->getUrl();
+		}
+		
+		/**
+		 * Returns URL back to choose Item Form
+		 * @return string
+		 */
+		public function get_cancel_itemURL() {
+			$url = new Url($this->url->getUrl());
+			$url->query->remove('scan');
+			$url->query->remove('lotnbr');
+			$url->query->remove('serialnbr');
+			$url->query->remove('itemID');
+			$url->query->remove('itemid');
+			return $url->getUrl();
 		}
 	}
