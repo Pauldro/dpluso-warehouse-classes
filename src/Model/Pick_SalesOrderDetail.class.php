@@ -159,12 +159,12 @@
                 'item' => [
                     'itemid' => $this->itemnbr,
                     'qty' => [
-                        'expected'     => $this->binqty,
-                        'ordered'      => $this->qtyordered,
-                        'picked'       => $this->get_userpickedtotal(),
-                        'pulled'       => $this->qtypulled,
-                        'total_picked' => $this->get_orderpickedtotal(),
-                        'remaining'    => $this->get_qtyremaining()
+                        'expected'     => intval($this->binqty),
+                        'ordered'      => intval($this->qtyordered),
+                        'picked'       => intval($this->get_userpickedtotal()),
+                        'pulled'       => intval($this->qtypulled),
+                        'total_picked' => intval($this->get_orderpickedtotal()),
+                        'remaining'    => intval($this->get_qtyremaining())
                     ]
                 ]
             ]);

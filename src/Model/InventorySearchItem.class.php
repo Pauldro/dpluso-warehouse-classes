@@ -242,6 +242,18 @@
         static function count_from_itemid($sessionID, $itemID, $binID = '', $debug = false) {
             return count_invsearch_itemid($sessionID, $itemID, $binID, $debug);
         }
+        
+        /**
+         * Returns the total qty found for that itemID found at bin if provided
+         * @param string $sessionID Session Identifier
+         * @param string $itemID    Item ID
+         * @param string $binID     Bin ID
+         * @param bool   $debug     Run in debug? If so, return SQL Query
+         * @return int
+         */
+        static function get_total_qty_itemid($sessionID, $itemID, $binID = '', $debug = false) {
+            return get_invsearch_total_qty_itemid($sessionID, $itemID, $binID, $debug);
+        }
 
         /**
          * Returns an array of InventorySearch Items that were found
@@ -302,6 +314,18 @@
          */
         static function count_distinct_itemid($sessionID, $debug = false) {
             return count_invsearchitems_distinct_itemid($sessionID, $debug);
+        }
+        
+        /**
+         * Returns an array of InventorySearchItem that were found for that itemID and binID if provided
+         * @param  string $sessionID Session Identifier
+         * @param  string $itemID    Item ID
+         * @param  string $binID     Bin ID
+         * @param  string $debug     Run in debug? If so, return SQL Query
+         * @return array            [InventorySearchItem]
+         */
+        static function get_all_items_lotserial($sessionID, $itemID, $binID = '', $debug = false) {
+            return get_all_invsearchitems_lotserial($sessionID, $itemID, $binID = '', $debug = false);
         }
         
          /**
