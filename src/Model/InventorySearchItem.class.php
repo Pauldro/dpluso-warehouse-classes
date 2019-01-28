@@ -203,8 +203,8 @@
          * @param bool   $debug        Run in debug? If so, return SQL Query
          * @return InventorySearchItem
          */
-        static function load_from_lotserial($sessionID, $lotserial, $debug = false) {
-            return get_invsearchitem_lotserial($sessionID, $lotserial, $debug);
+        static function load_from_lotserial($sessionID, $lotserial, $binID = '', $debug = false) {
+            return get_invsearchitem_lotserial($sessionID, $lotserial, $binID, $debug);
         }
 
         /**

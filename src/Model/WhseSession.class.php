@@ -104,11 +104,15 @@
             
             if ($whse->are_binsranged()) {
                 $arranged = 'range';
-                $range = $whse->get_binrange();
-                $bins = array(
-                    'from' => $range->from,
-                    'through' => $range->through
-                );
+                $ranges = $whse->get_binranges();
+                $bins = array();
+                
+                foreach ($ranges as $range) {
+                    $bins[] = array(
+                        'from' => $range->from,
+                        'through' => $range->through
+                    );
+                }
             } else {
                 $arranged = 'list';
                 $list = $whse->get_binlist();

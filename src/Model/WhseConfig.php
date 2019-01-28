@@ -232,6 +232,16 @@
         public function get_binrange($debug = false) {
             return WhseBin::get_binrange($this->whseid, $debug);
         }
+        
+        /**
+         * Returns bin ranges
+         *
+         * @param bool $debug Run in debug? If so, return SQL Query
+         * @return WhseBin
+         */
+        public function get_binranges($debug = false) {
+            return WhseBin::get_binranges($this->whseid, $debug);
+        }
 
         /**
          * Returns bin list
@@ -358,6 +368,16 @@
          */
         static function get_binrange($whseID, $debug = false) {
             return get_bnctl_range($whseID, $debug);
+        }
+        
+        /**
+         * Returns bin ranges
+         * @param string $whseID Warehouse ID
+         * @param bool   $debug  Run in debug? If so, return SQL Query
+         * @return array <WhseBin>
+         */
+        static function get_binranges($whseID, $debug = false) {
+            return get_bnctl_ranges($whseID, $debug);
         }
 
         /**
