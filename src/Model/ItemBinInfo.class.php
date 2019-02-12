@@ -125,6 +125,27 @@
                 return self::find_by_itemid($sessionID, $item->itemid, $debug);
             }
         }
+
+        /**
+         * Returns an array of ItemBinfo for JS
+         *
+         * @param string              $sessionID
+         * @param InventorySearchItem $item
+         * @param boolean             $debug
+         * @return array              <ItemBinfo>
+         */
+        static function get_find_by_itemjsarray($sessionID, InventorySearchItem $item, $debug = false) {
+            $binarray = array();
+            $bins = self::find_by_item($sessionID, $item, $debug);
+            
+            foreach ($bins as $bin) {
+                $binarray[$bin->bin] = array(
+                    'bin' => $bin->bin,
+                    'qty' => $bin->qty
+                );
+            }
+            return $binarray;
+        }
         
         /**
          * Returns item bin qty
