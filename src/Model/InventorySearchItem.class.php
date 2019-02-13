@@ -325,7 +325,7 @@
          * @return array            [InventorySearchItem]
          */
         static function get_all_items_lotserial($sessionID, $itemID, $binID = '', $debug = false) {
-            return get_all_invsearchitems_lotserial($sessionID, $itemID, $binID = '', $debug = false);
+            return get_all_invsearchitems_lotserial($sessionID, $itemID, $binID = '', $debug);
         }
         
          /**
