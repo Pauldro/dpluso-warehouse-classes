@@ -7,7 +7,7 @@
 		use \Dplus\Base\MagicMethodTraits;
 		use \Dplus\Base\CreateFromObjectArrayTraits;
         use \Dplus\Base\CreateClassArrayTraits;
-        
+
         /**
          * Session Identifier
          * @var string
@@ -69,13 +69,13 @@
          * @var string
          */
         protected $desc2;
-        
+
         /**
          * Primary Bin
          * @var string
          */
         protected $primarybin;
-        
+
         /**
          * Current Bin
          * @var string
@@ -87,7 +87,7 @@
          * @var int
          */
         protected $qty;
-        
+
         /**
          * Date
          * @var int
@@ -111,7 +111,7 @@
             'lotnbr'    => 'lotserial',
             'binID'     => 'bin'
         );
-        
+
         /**
          * Item Type and the property / alias name that represents it
          * @var array
@@ -121,7 +121,7 @@
             'S' => 'serialnbr',
             'N' => 'itemid'
         );
-        
+
         /**
          * Array of Item Types and their description
          *
@@ -164,7 +164,7 @@
         public function is_priceonly() {
             return $this->itemtype == 'P';
         }
-        
+
         /**
          * Returns the property needed to access the item's identifier
          * based on its item type
@@ -174,7 +174,7 @@
         public function get_itemtypeproperty() {
             return self::$itemtype_properties[$this->itemtype];
         }
-        
+
         /**
          * Returns the description needed for this item based on its itemtype
          * @return string
@@ -182,7 +182,7 @@
         public function get_itemtypepropertydesc() {
             return self::$itemtype_propertydesc[$this->itemtype];
         }
-        
+
         /**
          * Returns item's identifer based on item type
          * e.g. Lot Number / Serial Number / Item ID
@@ -195,7 +195,7 @@
                 return $this->itemid;
             }
         }
-        
+
         /**
          * Loads an object of this class with the provided (Lot | Serial) Number
          * @param string $sessionID    Session Identifier
@@ -242,7 +242,7 @@
         static function count_from_itemid($sessionID, $itemID, $binID = '', $debug = false) {
             return count_invsearch_itemid($sessionID, $itemID, $binID, $debug);
         }
-        
+
         /**
          * Returns the total qty found for that itemID found at bin if provided
          * @param string $sessionID Session Identifier
@@ -274,8 +274,8 @@
         static function count_all($sessionID, $debug = false) {
             return count_invsearch($sessionID, $debug);
         }
-        
-        
+
+
         /**
          * Returns an array of InventorySearch Items that were found that are distinct by xorigin (Cross Referencee)
          * @param string $sessionID Session Identifier
@@ -295,15 +295,16 @@
         static function count_distinct_xorigin($sessionID, $debug = false) {
             return count_invsearch_distinct_xorigin($sessionID, $debug);
         }
-        
+
         /**
          * Returns an array of InventorySearch Items that were found that are distinct by xorigin (Cross Referencee)
          * @param string $sessionID Session Identifier
+         * @param string $binID     Bin Identifier
          * @param bool   $debug     Run in debug? If so, return SQL Query
          * @return array
          */
-        static function get_all_distinct_itemid($sessionID, $debug = false) {
-            return get_invsearchitems_distinct_itemid($sessionID, $debug);
+        static function get_all_distinct_itemid($sessionID, $binID = '', $debug = false) {
+            return get_invsearchitems_distinct_itemid($sessionID, $binID, $debug);
         }
 
         /**
@@ -315,7 +316,7 @@
         static function count_distinct_itemid($sessionID, $debug = false) {
             return count_invsearchitems_distinct_itemid($sessionID, $debug);
         }
-        
+
         /**
          * Returns an array of InventorySearchItem that were found for that itemID and binID if provided
          * @param  string $sessionID Session Identifier
@@ -325,9 +326,9 @@
          * @return array            [InventorySearchItem]
          */
         static function get_all_items_lotserial($sessionID, $itemID, $binID = '', $debug = false) {
-            return get_all_invsearchitems_lotserial($sessionID, $itemID, $binID = '', $debug);
+            return get_all_invsearchitems_lotserial($sessionID, $itemID, $binID, $debug);
         }
-        
+
          /**
          * Returns the first record found in the DB
          * // NOTE Should ONLY be used if there's one record in the table
