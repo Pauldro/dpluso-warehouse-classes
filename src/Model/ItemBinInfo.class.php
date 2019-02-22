@@ -152,4 +152,9 @@
         static function get_binqty($sessionID, InventorySearchItem $item, $debug = false) {
             return get_bininfo_qty($sessionID, $item, $debug);
         }
+
+        
+        static function remove_nondbkeys($array) {
+            unset($array['fieldaliases']);
+        }
     }
