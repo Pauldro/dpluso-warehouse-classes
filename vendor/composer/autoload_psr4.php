@@ -7,5 +7,4 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'Dplus\\Warehouse\\' => array($baseDir . '/src'),
-    '' => array($baseDir . '/src/Model'),
 );

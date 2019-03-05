@@ -10,6 +10,7 @@ return array(
     'Dplus\\Warehouse\\Binr' => $baseDir . '/src/BinReassign.class.php',
     'Dplus\\Warehouse\\PhysicalCount' => $baseDir . '/src/PhysicalCount.class.php',
     'Dplus\\Warehouse\\PickSalesOrderDisplay' => $baseDir . '/src/PickSalesOrderDisplay.class.php',
+    'Dplus\\Warehouse\\WhseLabelPrint' => $baseDir . '/src/WhseLabelPrint.class.php',
     'InventorySearchItem' => $baseDir . '/src/Model/InventorySearchItem.class.php',
     'ItemBinInfo' => $baseDir . '/src/Model/ItemBinInfo.class.php',
     'Pick_SalesOrder' => $baseDir . '/src/Model/Pick_SalesOrder.class.php',

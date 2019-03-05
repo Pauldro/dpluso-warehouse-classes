@@ -20,15 +20,12 @@ class ComposerStaticInitccd8d6f6eec3cd1f49126ba9f289ce0d
         ),
     );
 
-    public static $fallbackDirsPsr4 = array (
-        0 => __DIR__ . '/../..' . '/src/Model',
-    );
-
     public static $classMap = array (
         'BarcodedItem' => __DIR__ . '/../..' . '/src/Model/BarcodedItem.class.php',
         'Dplus\\Warehouse\\Binr' => __DIR__ . '/../..' . '/src/BinReassign.class.php',
         'Dplus\\Warehouse\\PhysicalCount' => __DIR__ . '/../..' . '/src/PhysicalCount.class.php',
         'Dplus\\Warehouse\\PickSalesOrderDisplay' => __DIR__ . '/../..' . '/src/PickSalesOrderDisplay.class.php',
+        'Dplus\\Warehouse\\WhseLabelPrint' => __DIR__ . '/../..' . '/src/WhseLabelPrint.class.php',
         'InventorySearchItem' => __DIR__ . '/../..' . '/src/Model/InventorySearchItem.class.php',
         'ItemBinInfo' => __DIR__ . '/../..' . '/src/Model/ItemBinInfo.class.php',
         'Pick_SalesOrder' => __DIR__ . '/../..' . '/src/Model/Pick_SalesOrder.class.php',
@@ -45,7 +42,6 @@ class ComposerStaticInitccd8d6f6eec3cd1f49126ba9f289ce0d
         return \Closure::bind(function () use ($loader) {
             $loader->prefixLengthsPsr4 = ComposerStaticInitccd8d6f6eec3cd1f49126ba9f289ce0d::$prefixLengthsPsr4;
             $loader->prefixDirsPsr4 = ComposerStaticInitccd8d6f6eec3cd1f49126ba9f289ce0d::$prefixDirsPsr4;
-            $loader->fallbackDirsPsr4 = ComposerStaticInitccd8d6f6eec3cd1f49126ba9f289ce0d::$fallbackDirsPsr4;
             $loader->classMap = ComposerStaticInitccd8d6f6eec3cd1f49126ba9f289ce0d::$classMap;
 
         }, null, ClassLoader::class);
