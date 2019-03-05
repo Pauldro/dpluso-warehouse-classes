@@ -23,9 +23,9 @@ class ComposerStaticInitccd8d6f6eec3cd1f49126ba9f289ce0d
     public static $classMap = array (
         'BarcodedItem' => __DIR__ . '/../..' . '/src/Model/BarcodedItem.class.php',
         'Dplus\\Warehouse\\Binr' => __DIR__ . '/../..' . '/src/BinReassign.class.php',
+        'Dplus\\Warehouse\\LabelPrinting' => __DIR__ . '/../..' . '/src/LabelPrinting.class.php',
         'Dplus\\Warehouse\\PhysicalCount' => __DIR__ . '/../..' . '/src/PhysicalCount.class.php',
         'Dplus\\Warehouse\\PickSalesOrderDisplay' => __DIR__ . '/../..' . '/src/PickSalesOrderDisplay.class.php',
-        'Dplus\\Warehouse\\WhseLabelPrint' => __DIR__ . '/../..' . '/src/WhseLabelPrint.class.php',
         'InventorySearchItem' => __DIR__ . '/../..' . '/src/Model/InventorySearchItem.class.php',
         'ItemBinInfo' => __DIR__ . '/../..' . '/src/Model/ItemBinInfo.class.php',
         'Pick_SalesOrder' => __DIR__ . '/../..' . '/src/Model/Pick_SalesOrder.class.php',

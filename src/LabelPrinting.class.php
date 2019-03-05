@@ -3,7 +3,8 @@
     
     use Purl\Url;
     use Dplus\ProcessWire\DplusWire;
-	class WhseLabelPrint {
+
+	class LabelPrinting {
 		use \Dplus\Base\ThrowErrorTrait;
 		use \Dplus\Base\MagicMethodTraits;
 		use \Dplus\Base\CreateFromObjectArrayTraits;
