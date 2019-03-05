@@ -14,7 +14,9 @@ return array(
     'ItemBinInfo' => $baseDir . '/src/Model/ItemBinInfo.class.php',
     'Pick_SalesOrder' => $baseDir . '/src/Model/Pick_SalesOrder.class.php',
     'Pick_SalesOrderDetail' => $baseDir . '/src/Model/Pick_SalesOrderDetail.class.php',
+    'ThermalLabelFormat' => $baseDir . '/src/Model/ThermalLabelFormat.class.php',
     'WhseBin' => $baseDir . '/src/Model/WhseConfig.php',
     'WhseConfig' => $baseDir . '/src/Model/WhseConfig.php',
+    'WhsePrinter' => $baseDir . '/src/Model/WhsePrinter.class.php',
     'WhseSession' => $baseDir . '/src/Model/WhseSession.class.php',
 );

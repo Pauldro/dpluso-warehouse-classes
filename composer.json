@@ -5,11 +5,9 @@
     "keywords": ["dplus-warehouse", "dpluso-warehouse", "dplus-pick", "dplus-pack"],
     "homepage": "http://github.com/cptechinc/dpluso-warehouse",
 	"autoload": {
-		"classmap": [
-			"src/PickSalesOrderDisplay.class.php", 
-			"src/PhysicalCount.class.php",
-			"src/BinReassign.class.php",
-			"src/Model/"
-		]
+		"psr-4": {
+			"": "src/Model/",
+			"Dplus\\Warehouse\\": "src/"
+		}
 	}
 }

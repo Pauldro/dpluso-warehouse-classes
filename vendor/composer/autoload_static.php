@@ -6,6 +6,24 @@ namespace Composer\Autoload;
 
 class ComposerStaticInitccd8d6f6eec3cd1f49126ba9f289ce0d
 {
+    public static $prefixLengthsPsr4 = array (
+        'D' => 
+        array (
+            'Dplus\\Warehouse\\' => 16,
+        ),
+    );
+
+    public static $prefixDirsPsr4 = array (
+        'Dplus\\Warehouse\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/src',
+        ),
+    );
+
+    public static $fallbackDirsPsr4 = array (
+        0 => __DIR__ . '/../..' . '/src/Model',
+    );
+
     public static $classMap = array (
         'BarcodedItem' => __DIR__ . '/../..' . '/src/Model/BarcodedItem.class.php',
         'Dplus\\Warehouse\\Binr' => __DIR__ . '/../..' . '/src/BinReassign.class.php',
@@ -15,14 +33,19 @@ class ComposerStaticInitccd8d6f6eec3cd1f49126ba9f289ce0d
         'ItemBinInfo' => __DIR__ . '/../..' . '/src/Model/ItemBinInfo.class.php',
         'Pick_SalesOrder' => __DIR__ . '/../..' . '/src/Model/Pick_SalesOrder.class.php',
         'Pick_SalesOrderDetail' => __DIR__ . '/../..' . '/src/Model/Pick_SalesOrderDetail.class.php',
+        'ThermalLabelFormat' => __DIR__ . '/../..' . '/src/Model/ThermalLabelFormat.class.php',
         'WhseBin' => __DIR__ . '/../..' . '/src/Model/WhseConfig.php',
         'WhseConfig' => __DIR__ . '/../..' . '/src/Model/WhseConfig.php',
+        'WhsePrinter' => __DIR__ . '/../..' . '/src/Model/WhsePrinter.class.php',
         'WhseSession' => __DIR__ . '/../..' . '/src/Model/WhseSession.class.php',
     );
 
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
+            $loader->prefixLengthsPsr4 = ComposerStaticInitccd8d6f6eec3cd1f49126ba9f289ce0d::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInitccd8d6f6eec3cd1f49126ba9f289ce0d::$prefixDirsPsr4;
+            $loader->fallbackDirsPsr4 = ComposerStaticInitccd8d6f6eec3cd1f49126ba9f289ce0d::$fallbackDirsPsr4;
             $loader->classMap = ComposerStaticInitccd8d6f6eec3cd1f49126ba9f289ce0d::$classMap;
 
         }, null, ClassLoader::class);
