@@ -64,7 +64,7 @@
          * Session Identifier
          * @var string
          */
-        protected $sessionID;
+        protected $sessionid;
         
         
         /**
@@ -83,8 +83,8 @@
          * @return void
          */
         public function init($sessionID) {
-            $this->sessionID = $sessionID;
-            $whsesession = WhseSession::load($this->sessionID);
+            $this->sessionid = $sessionID;
+            $whsesession = WhseSession::load($this->sessionid);
             
             DplusWire::wire('config')->js('pickorder', [
                 'order' => [

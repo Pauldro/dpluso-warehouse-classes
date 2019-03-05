@@ -28,6 +28,7 @@ class ComposerStaticInitccd8d6f6eec3cd1f49126ba9f289ce0d
         'Dplus\\Warehouse\\PickSalesOrderDisplay' => __DIR__ . '/../..' . '/src/PickSalesOrderDisplay.class.php',
         'InventorySearchItem' => __DIR__ . '/../..' . '/src/Model/InventorySearchItem.class.php',
         'ItemBinInfo' => __DIR__ . '/../..' . '/src/Model/ItemBinInfo.class.php',
+        'LabelPrintSession' => __DIR__ . '/../..' . '/src/Model/LabelPrintSession.class.php',
         'Pick_SalesOrder' => __DIR__ . '/../..' . '/src/Model/Pick_SalesOrder.class.php',
         'Pick_SalesOrderDetail' => __DIR__ . '/../..' . '/src/Model/Pick_SalesOrderDetail.class.php',
         'ThermalLabelFormat' => __DIR__ . '/../..' . '/src/Model/ThermalLabelFormat.class.php',

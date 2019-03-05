@@ -13,6 +13,7 @@ return array(
     'Dplus\\Warehouse\\PickSalesOrderDisplay' => $baseDir . '/src/PickSalesOrderDisplay.class.php',
     'InventorySearchItem' => $baseDir . '/src/Model/InventorySearchItem.class.php',
     'ItemBinInfo' => $baseDir . '/src/Model/ItemBinInfo.class.php',
+    'LabelPrintSession' => $baseDir . '/src/Model/LabelPrintSession.class.php',
     'Pick_SalesOrder' => $baseDir . '/src/Model/Pick_SalesOrder.class.php',
     'Pick_SalesOrderDetail' => $baseDir . '/src/Model/Pick_SalesOrderDetail.class.php',
     'ThermalLabelFormat' => $baseDir . '/src/Model/ThermalLabelFormat.class.php',
