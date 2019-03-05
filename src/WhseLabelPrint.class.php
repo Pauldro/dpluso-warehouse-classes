@@ -1,6 +1,8 @@
 <?php
-	namespace Dplus\Warehouse;
-
+    namespace Dplus\Warehouse;
+    
+    use Purl\Url;
+    use Dplus\ProcessWire\DplusWire;
 	class WhseLabelPrint {
 		use \Dplus\Base\ThrowErrorTrait;
 		use \Dplus\Base\MagicMethodTraits;
