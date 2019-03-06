@@ -1,24 +1,36 @@
 <?php
-    namespace Dplus\Warehouse;
-    
-    use Purl\Url;
-    use Dplus\ProcessWire\DplusWire;
+	namespace Dplus\Warehouse;
 
+	/**
+	 * External Libraries
+	 */
+	use Purl\Url;
+
+	/**
+	 * Internal Libraries
+	 */
+	use Dplus\ProcessWire\DplusWire;
+	use Dplus\Base\ThrowErrorTrait;
+	use Dplus\Base\MagicMethodTraits;
+
+	/**
+	 * Class for providing Functions Necessary for Label Printing
+	 */
 	class LabelPrinting {
-		use \Dplus\Base\ThrowErrorTrait;
-		use \Dplus\Base\MagicMethodTraits;
-		use \Dplus\Base\CreateFromObjectArrayTraits;
-		use \Dplus\Base\CreateClassArrayTraits;
-		
+		use ThrowErrorTrait;
+		use MagicMethodTraits;
+
 		/**
-         * Returns Item Url to page
-         * @param string $itemproperty Item Property ex. itemid, lotnbr, serialnbr
-         * @param string $identifier
-         * @return string
-         */
-        public function get_itemURL($itemproperty, $identifier) {
-            $url = new Url(DplusWire::wire('config')->pages->inventory_printitemlabel);
-            $url->query->set($itemproperty, $identifier);
-            return $url->getUrl();
-        }
+		 * Returns URL to request initalize label print for Item
+		 * @param  string $itemID       Item ID
+		 * @param  string $itemproperty Item Property ex. itemid, lotnbr, serialnbr
+		 * @param  string $identifier   Item Property value ex. Item's Lot Serial / Item ID
+		 * @return string               Request Initialize Item Label Print
+		 */
+		public function get_request_labelprintinitURL($itemID, $itemproperty, $identifier) {
+			$url = new Url(DplusWire::wire('config')->pages->inventory_printitemlabel);
+			$url->query->set('itemID', $itemID);
+			$url->query->set($itemproperty, $identifier);
+			return $url->getUrl();
+		}
 	}
