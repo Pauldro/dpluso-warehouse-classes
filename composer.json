@@ -5,11 +5,11 @@
     "keywords": ["dplus-warehouse", "dpluso-warehouse", "dplus-pick", "dplus-pack"],
     "homepage": "http://github.com/cptechinc/dpluso-warehouse",
 	"autoload": {
-		"classmap": [
-			"src/Model/"
-		],
 		"psr-4": {
 			"Dplus\\Warehouse\\": "src/"
-		}
+		},
+		"classmap": [
+			"src/Model/"
+		]
 	}
 }
