@@ -255,6 +255,28 @@
             return get_invsearch_total_qty_itemid($sessionID, $itemID, $binID, $debug);
         }
 
+		/**
+		 * Returns the Number of Bins found for this Item ID
+		 * @param  string $sessionID Session Identifier
+		 * @param  string $itemID    Item ID
+		 * @param  bool   $debug     Run in debug? If so, return SQL Query
+		 * @return int               Number of Bins with this ItemID
+		 */
+		static function count_itemid_bins($sessionID, $itemID, $debug = false) {
+			return count_invsearch_itemid_bins($sessionID, $itemID, $debug);
+		}
+
+		/**
+		 * Returns list of Item Bins found for this itemID
+		 * @param  string $sessionID Session Identifier
+		 * @param  string $itemID    Item ID
+		 * @param  bool   $debug     Run in debug? If so, return SQL Query
+		 * @return array             <InventorySearchItem>
+		 */
+		static function get_invsearch_itemid_bins($sessionID, $itemID, $debug = false) {
+			return get_invsearch_item_bins($sessionID, $itemID, $debug);
+		}
+
         /**
          * Returns an array of InventorySearch Items that were found
          * @param string $sessionID Session Identifier
