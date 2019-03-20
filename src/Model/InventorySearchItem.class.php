@@ -330,13 +330,14 @@
         }
 
         /**
-         * Returns an array of InventorySearch Items that were found that are distinct by xorigin (Cross Referencee)
+         * Returns the number of distinct Item IDs found 
          * @param string $sessionID Session Identifier
+         * @param string $binID     Bin Identifier
          * @param bool   $debug     Run in debug? If so, return SQL Query
          * @return array
          */
-        static function count_distinct_itemid($sessionID, $debug = false) {
-            return count_invsearchitems_distinct_itemid($sessionID, $debug);
+        static function count_distinct_itemid($sessionID, $binID = '', $debug = false) {
+            return count_invsearchitems_distinct_itemid($sessionID, $binID = '', $debug);
         }
 
         /**
