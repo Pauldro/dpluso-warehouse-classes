@@ -40,7 +40,7 @@
 		 * @var float
 		 */
 		protected $length;
-		
+
 		/**
 		 * Returns a list of Thermal Label Formats
 		 * @param  bool   $debug Run in debug? If so return SQL Query
@@ -54,9 +54,19 @@
 		 * Returns a Thermal Printer Label Format
 		 * @param  string $formatID Thermal Printer format ID
 		 * @param  bool   $debug    Run in debug? If so return SQL Query
-		 * @return mixed            Array <ThermalLabelFormat> | SQL Query
+		 * @return mixed            <ThermalLabelFormat> | SQL Query
 		 */
 		static function load($formatID, $debug = false) {
 			return get_thermalformatlabel_format($formatID, $debug);
+		}
+
+		/**
+		 * Returns a Thermal Printer Label Format Desciription
+		 * @param  string $formatID Thermal Printer format ID
+		 * @param  bool   $debug    Run in debug? If so return SQL Query
+		 * @return mixed            Description | SQL Query
+		 */
+		static function load_desc($formatID, $debug = false) {
+			return get_thermalformatlabel_format_desc($formatID, $debug);
 		}
 	}

@@ -32,7 +32,7 @@
 		 * @var string
 		 */
 		protected $whse;
-		
+
 		/**
 		 * Returns a list of Printers from the prntctrl table
 		 * @param  string $whseID  Warehouse ID to limit Printers
@@ -50,7 +50,18 @@
 		 * @param  bool   $debug      Run in debug? If so return SQL Query
 		 * @return mixed              WhsePrinter | SQL Query
 		 */
-		static function load($printerID, $whseID, $debug = false) {
-			return get_prntctrl_printer($printerID, $whseID, $debug);
+		static function load($whseID = '', $printerID,  $debug = false) {
+			return get_prntctrl_printer($whseID, $printerID, $debug);
+		}
+
+		/**
+		 * Returns a Printer description from the prntctrl table
+		 * @param  string $printerID  Printer ID
+		 * @param  string $whseID     Warehouse ID to limit Printer
+		 * @param  bool   $debug      Run in debug? If so return SQL Query
+		 * @return mixed              WhsePrinter | SQL Query
+		 */
+		static function load_desc($whseID = '', $printerID,  $debug = false) {
+			return get_prntctrl_printer_desc($whseID, $printerID,  $debug);
 		}
 	}
