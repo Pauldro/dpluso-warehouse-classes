@@ -8,13 +8,13 @@
 		use \Dplus\Base\MagicMethodTraits;
 		use \Dplus\Base\CreateFromObjectArrayTraits;
         use \Dplus\Base\CreateClassArrayTraits;
-        
+
         /**
          * Session Identifier
          * @var string
          */
         protected $sessionid;
-        
+
         /**
          * Warehouse Code
          * @var string
@@ -74,10 +74,10 @@
         );
 
         /**
-         * Returns an array of ItemBinInfo pertaining to all the bins that 
+         * Returns an array of ItemBinInfo pertaining to all the bins that
          * store this Item ID
          * @param  string $sessionID  Session Identifier
-         * @param  string $itemID     Item ID to Locate 
+         * @param  string $itemID     Item ID to Locate
          * @param  bool   $debug      Run in debug? If so, return SQL Query
          * @return array
          */
@@ -86,10 +86,10 @@
         }
 
         /**
-         * Returns an array of ItemBinInfo pertaining to all the bins that 
+         * Returns an array of ItemBinInfo pertaining to all the bins that
          * store this Lot Number
          * @param  string $sessionID  Session Identifier
-         * @param  string $lotnbr     Lot Number to Locate 
+         * @param  string $lotnbr     Lot Number to Locate
          * @param  bool   $debug      Run in debug? If so, return SQL Query
          * @return array
          */
@@ -101,14 +101,14 @@
          * Returns an Instance of ItemBinInfo pertaining to the location of this Serial Number
          * // NOTE Returns 1 in array because Serialized Items are individual
          * @param  string $sessionID   Session Identifier
-         * @param  string $serialnbr   Serial Number to Locate 
+         * @param  string $serialnbr   Serial Number to Locate
          * @param  bool   $debug       Run in debug? If so, return SQL Query
          * @return array
          */
         static function find_by_serialnbr($sessionID, $serialnbr, $debug = false) {
             return get_bininfo_lotserial($sessionID, $serialnbr, $debug);
         }
-        
+
         /**
          * Returns an array of this class pertaining to all the bins that contain this item
          * @param  string              $sessionID Session Identifier
@@ -117,17 +117,17 @@
          * @return array                          Bins that contain this item
          */
         static function find_by_item($sessionID, InventorySearchItem $item, $debug = false) {
-            if ($item->is_lotted()) {
+            if ($item->is_lotted() && $item->is_xorigin_serial()) {
                 return self::find_by_lotnbr($sessionID, $item->lotserial, $debug);
-            } elseif ($item->is_serialized()) {
+            } elseif ($item->is_serialized() && $item->is_xorigin_lot()) {
                 return self::find_by_serialnbr($sessionID, $item->lotserial, $debug);
             } else {
                 return self::find_by_itemid($sessionID, $item->itemid, $debug);
             }
         }
-        
+
         /**
-         * Returns an array of ItemBinfo as an array 
+         * Returns an array of ItemBinfo as an array
          * @param string              $sessionID  Session Identifier
          * @param InventorySearchItem $item       Item to find bins for
          * @return array
@@ -135,13 +135,13 @@
         static function get_find_by_itemjsarray($sessionID, InventorySearchItem $item) {
             $binarray = array();
             $bins = self::find_by_item($sessionID, $item);
-            
+
             foreach ($bins as $bin) {
                 $binarray[$bin->bin] = $bin->_toArray();
             }
             return $binarray;
         }
-        
+
         /**
          * Returns item bin qty
          * @param  string              $sessionID Session Identifier
@@ -153,7 +153,7 @@
             return get_bininfo_qty($sessionID, $item, $debug);
         }
 
-        
+
         static function remove_nondbkeys($array) {
             unset($array['fieldaliases']);
         }

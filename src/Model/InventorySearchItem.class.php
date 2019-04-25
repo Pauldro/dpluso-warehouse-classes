@@ -158,6 +158,38 @@
         }
 
         /**
+         * Is the Item Cross Reference Origin from the Item ID
+         * @return bool
+         */
+        public function is_xorigin_item() {
+            return $this->xorigin == 'item';
+        }
+
+        /**
+         * Is the Item Cross Reference Origin from the Lot or Serial Master
+         * @return bool
+         */
+        public function is_xorigin_lotserial() {
+            return $this->xorigin == 'lotm' || $this->xorigin  == 'seri';
+        }
+
+        /**
+         * Is the Item Cross Reference Origin from the Lot Master
+         * @return bool
+         */
+        public function is_xorigin_lot() {
+            return $this->xorigin == 'lotm';
+        }
+
+        /**
+         * Is the Item Cross Reference Origin from Serial Master
+         * @return bool
+         */
+        public function is_xorigin_serial() {
+            return $this->xorigin == 'seri';
+        }
+
+        /**
          * Returns if Item is a Normal Inventory item
          * @return bool
          */
